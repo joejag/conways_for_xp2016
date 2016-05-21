@@ -1,4 +1,6 @@
-package gol;
+package gol.gui;
+
+import gol.ConwaysSolver;
 
 import javax.swing.*;
 import java.awt.*;
@@ -6,10 +8,17 @@ import java.awt.event.*;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Gui {
-    public static void main(String[] args) {
-        ConwaysGameOfLife.main(new String[]{});
+
+    private static ConwaysSolver solver;
+
+    public static void go(ConwaysSolver solver) {
+        Gui.solver = solver;
+        ConwaysGameOfLife.showGui();
     }
 
     static class ConwaysGameOfLife extends JFrame implements ActionListener {
@@ -26,7 +35,7 @@ public class Gui {
         private GameBoard gb_gameBoard;
         private Thread game;
 
-        public static void main(String[] args) {
+        public static void showGui() {
             // Setup the swing specifics
             JFrame game = new ConwaysGameOfLife();
             game.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -42,39 +51,23 @@ public class Gui {
             // Setup menu
             mb_menu = new JMenuBar();
             setJMenuBar(mb_menu);
-            m_file = new JMenu("File");
-            mb_menu.add(m_file);
             m_game = new JMenu("Game");
             mb_menu.add(m_game);
-            m_help = new JMenu("Help");
-            mb_menu.add(m_help);
-            mi_file_options = new JMenuItem("Options");
-            mi_file_options.addActionListener(this);
-            mi_file_exit = new JMenuItem("Exit");
-            mi_file_exit.addActionListener(this);
-            m_file.add(mi_file_options);
-            m_file.add(new JSeparator());
-            m_file.add(mi_file_exit);
-            mi_game_autofill = new JMenuItem("Autofill");
-            mi_game_autofill.addActionListener(this);
+
             mi_game_play = new JMenuItem("Play");
             mi_game_play.addActionListener(this);
             mi_game_stop = new JMenuItem("Stop");
+
             mi_game_stop.setEnabled(false);
             mi_game_stop.addActionListener(this);
+
             mi_game_reset = new JMenuItem("Reset");
             mi_game_reset.addActionListener(this);
-            m_game.add(mi_game_autofill);
-            m_game.add(new JSeparator());
+
             m_game.add(mi_game_play);
             m_game.add(mi_game_stop);
             m_game.add(mi_game_reset);
-            mi_help_about = new JMenuItem("About");
-            mi_help_about.addActionListener(this);
-            mi_help_source = new JMenuItem("Source");
-            mi_help_source.addActionListener(this);
-            m_help.add(mi_help_about);
-            m_help.add(mi_help_source);
+
             // Setup game board
             gb_gameBoard = new GameBoard();
             add(gb_gameBoard);
@@ -114,12 +107,9 @@ public class Gui {
                 final JComboBox cb_seconds = new JComboBox(secondOptions);
                 p_options.add(cb_seconds);
                 cb_seconds.setSelectedItem(i_movesPerSecond);
-                cb_seconds.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent ae) {
-                        i_movesPerSecond = (Integer) cb_seconds.getSelectedItem();
-                        f_options.dispose();
-                    }
+                cb_seconds.addActionListener(ae1 -> {
+                    i_movesPerSecond = (Integer) cb_seconds.getSelectedItem();
+                    f_options.dispose();
                 });
                 f_options.setVisible(true);
             } else if (ae.getSource().equals(mi_game_autofill)) {
@@ -136,14 +126,11 @@ public class Gui {
                 Object[] percentageOptions = {"Select", 5, 10, 15, 20, 25, 30, 40, 50, 60, 70, 80, 90, 95};
                 final JComboBox cb_percent = new JComboBox(percentageOptions);
                 p_autoFill.add(cb_percent);
-                cb_percent.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        if (cb_percent.getSelectedIndex() > 0) {
-                            gb_gameBoard.resetBoard();
-                            gb_gameBoard.randomlyFillBoard((Integer) cb_percent.getSelectedItem());
-                            f_autoFill.dispose();
-                        }
+                cb_percent.addActionListener(e -> {
+                    if (cb_percent.getSelectedIndex() > 0) {
+                        gb_gameBoard.resetBoard();
+                        gb_gameBoard.randomlyFillBoard((Integer) cb_percent.getSelectedItem());
+                        f_autoFill.dispose();
                     }
                 });
                 f_autoFill.setVisible(true);
@@ -293,17 +280,33 @@ public class Gui {
             public void run() {
                 boolean[][] gameBoard = new boolean[d_gameBoardSize.width + 2][d_gameBoardSize.height + 2];
                 for (Point current : point) {
-                    gameBoard[current.x + 1][current.y + 1] = true;
+                    gameBoard[current.x][current.y] = true;
                 }
-                java.util.List<Point> survivingCells = new SimpleFinder().findSurvivors(gameBoard);
+
+                Set<Point> survivingCells = solver.nextGeneration(booleanGridToSet(gameBoard));
+                Set<Point> filteredSurvivors = survivingCells.stream().filter(p -> p.getY() < d_gameBoardSize.height).collect(Collectors.toSet());
+
                 resetBoard();
-                point.addAll(survivingCells);
+                point.addAll(filteredSurvivors);
                 repaint();
                 try {
                     Thread.sleep(1000 / i_movesPerSecond);
                     run();
                 } catch (InterruptedException ex) {
                 }
+            }
+
+            private Set<Point> booleanGridToSet(boolean[][] gameBoard) {
+                Set<Point> currentGeneration = new HashSet<>();
+
+                for (int i = 1; i < gameBoard.length - 1; i++) {
+                    for (int j = 1; j < gameBoard[0].length - 1; j++) {
+                        if (gameBoard[i][j])
+                            currentGeneration.add(new Point(i, j));
+                    }
+                }
+
+                return currentGeneration;
             }
         }
     }

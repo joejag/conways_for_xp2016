@@ -1,4 +1,4 @@
-package gol;
+package gol.solvers;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -7,12 +7,12 @@ import java.util.Map;
 
 import static java.util.Arrays.asList;
 
-public class God {
+public class OoSolver {
 
     private Map<int[], Cell> knownLife = new HashMap<>();
 
     public static void main(String[] args) {
-        God god = new God();
+        OoSolver god = new OoSolver();
 
         god.addLife(1, 1);
         god.addLife(1, 2);
