@@ -16,7 +16,8 @@ public class Grid<T> {
         this.defaultDefaultValueCreator = defaultValue;
     }
 
-    public T get(Point point) {
+    public T fetch(Point point) {
+        items.putIfAbsent(point, defaultDefaultValueCreator.apply(point));
         return items.get(point);
     }
 
@@ -36,16 +37,11 @@ public class Grid<T> {
         List<T> neighbouringItems = new ArrayList<>();
 
         for (Point neighbourPoint : neighbouringPointsFor(point)) {
-            T item = findItem(neighbourPoint);
+            T item = fetch(neighbourPoint);
             neighbouringItems.add(item);
         }
 
         return neighbouringItems;
-    }
-
-    private T findItem(Point point) {
-        items.putIfAbsent(point, defaultDefaultValueCreator.apply(point));
-        return items.get(point);
     }
 
     private List<Point> neighbouringPointsFor(Point point) {

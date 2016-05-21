@@ -25,7 +25,7 @@ public class Cell {
             newWorld.add(point, new Cell(point, true));
     }
 
-    protected boolean survives() {
+    private boolean survives() {
         return (!isAlive && (neighbours.size() == 3)) ||
                 (isAlive && ((neighbours.size() == 2) || (neighbours.size() == 3)));
     }
