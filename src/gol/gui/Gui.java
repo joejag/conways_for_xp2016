@@ -141,8 +141,8 @@ public class Gui {
                 super.paintComponent(g);
                 try {
                     Set<Point> viewablePoints = point.stream()
-                            .filter(p -> p.getY() < d_gameBoardSize.height)
-                            .filter(p -> p.getX() < d_gameBoardSize.width)
+                            .filter(p -> p.getY() < d_gameBoardSize.height && p.getY() >= 0)
+                            .filter(p -> p.getX() < d_gameBoardSize.width && p.getX() >= 0)
                             .collect(Collectors.toSet());
 
                     for (Point newPoint : viewablePoints) {
