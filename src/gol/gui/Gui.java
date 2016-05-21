@@ -5,7 +5,6 @@ import gol.ConwaysSolver;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.net.URI;
 import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
 import java.util.HashSet;
@@ -27,10 +26,10 @@ public class Gui {
         private static final int BLOCK_SIZE = 50;
 
         private JMenuBar mb_menu;
-        private JMenu m_file, m_game, m_help;
-        private JMenuItem mi_file_options, mi_file_exit;
-        private JMenuItem mi_game_autofill, mi_game_play, mi_game_stop, mi_game_reset;
-        private JMenuItem mi_help_about, mi_help_source;
+        private JMenu m_game;
+        private JMenuItem mi_game_play;
+        private JMenuItem mi_game_stop;
+        private JMenuItem mi_game_reset;
         private int i_movesPerSecond = 3;
         private GameBoard gb_gameBoard;
         private Thread game;
@@ -88,68 +87,14 @@ public class Gui {
 
         @Override
         public void actionPerformed(ActionEvent ae) {
-            if (ae.getSource().equals(mi_file_exit)) {
-                // Exit the game
-                System.exit(0);
-            } else if (ae.getSource().equals(mi_file_options)) {
-                // Put up an options panel to change the number of moves per second
-                final JFrame f_options = new JFrame();
-                f_options.setTitle("Options");
-                f_options.setSize(300, 60);
-                f_options.setLocation((Toolkit.getDefaultToolkit().getScreenSize().width - f_options.getWidth()) / 2,
-                        (Toolkit.getDefaultToolkit().getScreenSize().height - f_options.getHeight()) / 2);
-                f_options.setResizable(false);
-                JPanel p_options = new JPanel();
-                p_options.setOpaque(false);
-                f_options.add(p_options);
-                p_options.add(new JLabel("Number of moves per second:"));
-                Integer[] secondOptions = {1, 2, 3, 4, 5, 10, 15, 20};
-                final JComboBox cb_seconds = new JComboBox(secondOptions);
-                p_options.add(cb_seconds);
-                cb_seconds.setSelectedItem(i_movesPerSecond);
-                cb_seconds.addActionListener(ae1 -> {
-                    i_movesPerSecond = (Integer) cb_seconds.getSelectedItem();
-                    f_options.dispose();
-                });
-                f_options.setVisible(true);
-            } else if (ae.getSource().equals(mi_game_autofill)) {
-                final JFrame f_autoFill = new JFrame();
-                f_autoFill.setTitle("Autofill");
-                f_autoFill.setSize(360, 60);
-                f_autoFill.setLocation((Toolkit.getDefaultToolkit().getScreenSize().width - f_autoFill.getWidth()) / 2,
-                        (Toolkit.getDefaultToolkit().getScreenSize().height - f_autoFill.getHeight()) / 2);
-                f_autoFill.setResizable(false);
-                JPanel p_autoFill = new JPanel();
-                p_autoFill.setOpaque(false);
-                f_autoFill.add(p_autoFill);
-                p_autoFill.add(new JLabel("What percentage should be filled? "));
-                Object[] percentageOptions = {"Select", 5, 10, 15, 20, 25, 30, 40, 50, 60, 70, 80, 90, 95};
-                final JComboBox cb_percent = new JComboBox(percentageOptions);
-                p_autoFill.add(cb_percent);
-                cb_percent.addActionListener(e -> {
-                    if (cb_percent.getSelectedIndex() > 0) {
-                        gb_gameBoard.resetBoard();
-                        gb_gameBoard.randomlyFillBoard((Integer) cb_percent.getSelectedItem());
-                        f_autoFill.dispose();
-                    }
-                });
-                f_autoFill.setVisible(true);
-            } else if (ae.getSource().equals(mi_game_reset)) {
+
+            if (ae.getSource().equals(mi_game_reset)) {
                 gb_gameBoard.resetBoard();
                 gb_gameBoard.repaint();
             } else if (ae.getSource().equals(mi_game_play)) {
                 setGameBeingPlayed(true);
             } else if (ae.getSource().equals(mi_game_stop)) {
                 setGameBeingPlayed(false);
-            } else if (ae.getSource().equals(mi_help_source)) {
-                Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
-                try {
-                    desktop.browse(new URI("https://github.com/Burke9077/Conway-s-Game-of-Life"));
-                } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(null, "Source is available on GitHub at:\nhttps://github.com/Burke9077/Conway-s-Game-of-Life", "Source", JOptionPane.INFORMATION_MESSAGE);
-                }
-            } else if (ae.getSource().equals(mi_help_about)) {
-                JOptionPane.showMessageDialog(null, "Conway's game of life was a cellular animation devised by the mathematician John Conway.\nThis Java, swing based implementation was created by Matthew Burke.\n\nhttp://burke9077.com\nBurke9077@gmail.com\n@burke9077\n\nCreative Commons Attribution 4.0 International");
             }
         }
 
@@ -165,7 +110,7 @@ public class Gui {
             }
 
             private void updateArraySize() {
-                ArrayList<Point> removeList = new ArrayList<Point>(0);
+                ArrayList<Point> removeList = new ArrayList<>(0);
                 for (Point current : point) {
                     if ((current.x > d_gameBoardSize.width - 1) || (current.y > d_gameBoardSize.height - 1)) {
                         removeList.add(current);
@@ -176,9 +121,7 @@ public class Gui {
             }
 
             public void addPoint(int x, int y) {
-                if (!point.contains(new Point(x, y))) {
-                    point.add(new Point(x, y));
-                }
+                point.add(new Point(x, y));
                 repaint();
             }
 
@@ -192,16 +135,6 @@ public class Gui {
 
             public void resetBoard() {
                 point.clear();
-            }
-
-            public void randomlyFillBoard(int percent) {
-                for (int i = 0; i < d_gameBoardSize.width; i++) {
-                    for (int j = 0; j < d_gameBoardSize.height; j++) {
-                        if (Math.random() * 100 < percent) {
-                            addPoint(i, j);
-                        }
-                    }
-                }
             }
 
             @Override
