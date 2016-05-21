@@ -1,7 +1,5 @@
 package gol.gui;
 
-import gol.solvers.ConwaysSolver;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -9,13 +7,14 @@ import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class Gui {
 
-    private static ConwaysSolver solver;
+    private static Function<Set<Point>, Set<Point>> solver;
 
-    public static void go(ConwaysSolver solver) {
+    public static void go(Function<Set<Point>, Set<Point>> solver) {
         Gui.solver = solver;
         ConwaysGameOfLife.showGui();
     }
@@ -216,7 +215,7 @@ public class Gui {
 
             @Override
             public void run() {
-                Set<Point> survivingCells = solver.nextGeneration(point);
+                Set<Point> survivingCells = solver.apply(point);
                 resetBoard();
                 point.addAll(survivingCells);
                 repaint();

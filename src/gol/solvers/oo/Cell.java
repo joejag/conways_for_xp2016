@@ -1,6 +1,4 @@
-package gol.solvers.oo.cells;
-
-import gol.solvers.oo.Grid;
+package gol.solvers.oo;
 
 import java.awt.*;
 import java.util.ArrayList;
