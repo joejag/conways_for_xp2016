@@ -1,6 +1,6 @@
 package gol;
 
-import gol.solvers.oo.OoSolver;
+import gol.solvers.OoSolver;
 import org.junit.Assert;
 import org.junit.Test;
 

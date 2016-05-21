@@ -20,7 +20,14 @@ public abstract class Cell {
         neighbours.add(cell);
     }
 
+    public void decideIfJoiningTheNewWorld(Map<Point, Cell> newWorld) {
+        if (survives())
+            newWorld.put(point, new LiveCell(point));
+    }
+
     public abstract void visit(WorldVisitor universeVisitor);
 
-    public abstract void decideIfJoiningTheNewWorld(Map<Point, Cell> newWorld);
+    protected abstract boolean survives();
+
+
 }

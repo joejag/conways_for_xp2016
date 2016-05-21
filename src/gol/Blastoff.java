@@ -1,7 +1,7 @@
 package gol;
 
 import gol.gui.Gui;
-import gol.solvers.oo.OoSolver;
+import gol.solvers.OoSolver;
 import gol.solvers.ProceduralSolver;
 
 public class Blastoff {

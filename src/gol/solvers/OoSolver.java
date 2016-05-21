@@ -1,18 +1,17 @@
-package gol.solvers.oo;
+package gol.solvers;
 
+import gol.solvers.oo.God;
 import gol.solvers.oo.visitors.UniverseCaptureVisitor;
-import gol.solvers.oo.visitors.UniverseSysoutVisitor;
 
 import java.awt.*;
 import java.util.Set;
 
 public class OoSolver {
 
-    public Set<Point> nextGeneration(Set<Point> currentGeneration) {
-        God god = new God();
-        god.performGodsWork(currentGeneration);
+    private final God god = new God();
 
-        god.visit(new UniverseSysoutVisitor());
+    public Set<Point> nextGeneration(Set<Point> currentGeneration) {
+        god.performGodsWork(currentGeneration);
 
         UniverseCaptureVisitor visitor = new UniverseCaptureVisitor();
         god.visit(visitor);
