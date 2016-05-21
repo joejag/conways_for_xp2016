@@ -7,14 +7,14 @@ import gol.solvers.ProceduralSolver;
 public class Blastoff {
 
     public static void main(String[] args) {
-        objectVersion();
+        proceduralVersion();
     }
 
     private static void proceduralVersion() {
         Gui.go(currentGeneration -> new ProceduralSolver().nextGeneration(currentGeneration));
     }
 
-    private static void objectVersion() {
+    private static void objectOrientatedVersion() {
         Gui.go(currentGeneration -> new ObjectOrientatedSolver().nextGeneration(currentGeneration));
     }
 

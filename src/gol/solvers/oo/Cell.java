@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Cell {
 
-    private final List<Cell> neighbours = new ArrayList<>();
+    private final List<Cell> liveNeighbours = new ArrayList<>();
 
     private final Point point;
     private final boolean isAlive;
@@ -17,7 +17,7 @@ public class Cell {
     }
 
     public void meetNeighbour(Cell cell) {
-        neighbours.add(cell);
+        liveNeighbours.add(cell);
     }
 
     public void decideIfJoiningTheNewWorld(Grid<Cell> newWorld) {
@@ -26,8 +26,8 @@ public class Cell {
     }
 
     private boolean survives() {
-        return (!isAlive && (neighbours.size() == 3)) ||
-                (isAlive && ((neighbours.size() == 2) || (neighbours.size() == 3)));
+        return (!isAlive && (liveNeighbours.size() == 3)) ||
+                (isAlive && ((liveNeighbours.size() == 2) || (liveNeighbours.size() == 3)));
     }
 
 }
