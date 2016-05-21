@@ -1,19 +1,21 @@
 package gol.solvers.oo.cells;
 
 import gol.solvers.oo.Grid;
-import gol.solvers.oo.visitors.WorldVisitor;
 
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Cell {
+public class Cell {
 
-    protected final List<Cell> neighbours = new ArrayList<>();
-    protected final Point point;
+    private final List<Cell> neighbours = new ArrayList<>();
 
-    public Cell(Point point) {
+    private final Point point;
+    private final boolean isAlive;
+
+    public Cell(Point point, boolean isAlive) {
         this.point = point;
+        this.isAlive = isAlive;
     }
 
     public void meetNeighbour(Cell cell) {
@@ -22,12 +24,12 @@ public abstract class Cell {
 
     public void decideIfJoiningTheNewWorld(Grid<Cell> newWorld) {
         if (survives())
-            newWorld.add(point, new LiveCell(point));
+            newWorld.add(point, new Cell(point, true));
     }
 
-    public abstract void visit(WorldVisitor universeVisitor);
-
-    protected abstract boolean survives();
-
+    protected boolean survives() {
+        return (!isAlive && (neighbours.size() == 3)) ||
+                (isAlive && ((neighbours.size() == 2) || (neighbours.size() == 3)));
+    }
 
 }

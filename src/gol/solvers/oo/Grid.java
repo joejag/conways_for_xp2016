@@ -3,15 +3,16 @@ package gol.solvers.oo;
 import java.awt.*;
 import java.util.*;
 import java.util.List;
+import java.util.function.Function;
 
 import static java.util.Arrays.asList;
 
 public class Grid<T> {
 
-    private final DefaultValueCreator<T> defaultDefaultValueCreator;
+    private final Function<Point, T> defaultDefaultValueCreator;
     private Map<Point, T> items = new HashMap<>();
 
-    public Grid(DefaultValueCreator<T> defaultValue) {
+    public Grid(Function<Point, T> defaultValue) {
         this.defaultDefaultValueCreator = defaultValue;
     }
 
@@ -43,7 +44,7 @@ public class Grid<T> {
     }
 
     private T findItem(Point point) {
-        items.putIfAbsent(point, defaultDefaultValueCreator.create(point));
+        items.putIfAbsent(point, defaultDefaultValueCreator.apply(point));
         return items.get(point);
     }
 
@@ -57,7 +58,4 @@ public class Grid<T> {
                 new Point(x - 1, y - 1), new Point(x, y - 1), new Point(x + 1, y - 1));
     }
 
-    public interface DefaultValueCreator<T> {
-        T create(Point point);
-    }
 }
