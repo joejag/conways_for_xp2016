@@ -1,6 +1,6 @@
 package gol.gui;
 
-import gol.ConwaysSolver;
+import gol.solvers.ConwaysSolver;
 
 import javax.swing.*;
 import java.awt.*;

@@ -1,6 +1,6 @@
 package gol;
 
-import gol.solvers.OoSolver;
+import gol.solvers.ProceduralSolver;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -10,8 +10,8 @@ import java.util.Set;
 
 public class AcceptanceTests {
 
-    //    ProceduralSolver proceduralSolver = new ProceduralSolver();
-    OoSolver proceduralSolver = new OoSolver();
+        ProceduralSolver solver = new ProceduralSolver();
+//    ObjectOrientatedSolver solver = new ObjectOrientatedSolver();
 
     @Test
     public void testBlinker() {
@@ -20,7 +20,7 @@ public class AcceptanceTests {
         blinkerWorld.add(new Point(2, 2));
         blinkerWorld.add(new Point(3, 2));
 
-        Set<Point> nextGeneration = proceduralSolver.nextGeneration(blinkerWorld);
+        Set<Point> nextGeneration = solver.nextGeneration(blinkerWorld);
 
         Set<Point> nextBlinkerWorld = new HashSet<>();
         nextBlinkerWorld.add(new Point(2, 1));
@@ -37,7 +37,7 @@ public class AcceptanceTests {
         stillLifeBlock.add(new Point(1, 3));
         stillLifeBlock.add(new Point(2, 3));
 
-        Set<Point> nextGeneration = proceduralSolver.nextGeneration(stillLifeBlock);
+        Set<Point> nextGeneration = solver.nextGeneration(stillLifeBlock);
 
         Assert.assertEquals(stillLifeBlock, nextGeneration);
     }
@@ -51,7 +51,7 @@ public class AcceptanceTests {
         spaceShip.add(new Point(3, 3));
         spaceShip.add(new Point(2, 4));
 
-        Set<Point> nextGeneration = proceduralSolver.nextGeneration(spaceShip);
+        Set<Point> nextGeneration = solver.nextGeneration(spaceShip);
 
         Set<Point> spaceShipNextStep = new HashSet<>();
         spaceShipNextStep.add(new Point(2, 1));

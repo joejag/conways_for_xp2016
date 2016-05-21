@@ -1,4 +1,4 @@
-package gol;
+package gol.solvers;
 
 import java.awt.*;
 import java.util.Set;

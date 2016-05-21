@@ -6,7 +6,7 @@ import gol.solvers.oo.visitors.UniverseCaptureVisitor;
 import java.awt.*;
 import java.util.Set;
 
-public class OoSolver {
+public class ObjectOrientatedSolver {
 
     private final God god = new God();
 

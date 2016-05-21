@@ -25,10 +25,8 @@ public class World {
         Set<Point> knownLife = new HashSet<>(cells.keySet());
         for (Point point : knownLife) {
             Cell liveCell = cells.get(point);
-            List<Point> neighbouringCords = neighbouringPointsFor(point);
 
-            for (Point neighbourCord : neighbouringCords) {
-                Cell neighbouringCell = findCellEvenIfDead(neighbourCord);
+            for (Cell neighbouringCell : findNeighboursFor(point)) {
                 neighbouringCell.meetNeighbour(liveCell);
             }
         }
@@ -54,9 +52,20 @@ public class World {
         cells.put(point, new LiveCell(point));
     }
 
-    private Cell findCellEvenIfDead(Point neighbourCord) {
-        cells.putIfAbsent(neighbourCord, new DeadCell(neighbourCord));
-        return cells.get(neighbourCord);
+    private List<Cell> findNeighboursFor(Point point) {
+        List<Cell> neighbouringCells = new ArrayList<>();
+
+        for (Point neighbourCord : neighbouringPointsFor(point)) {
+            Cell cell = findCellEvenIfDead(neighbourCord);
+            neighbouringCells.add(cell);
+        }
+
+        return neighbouringCells;
+    }
+
+    private Cell findCellEvenIfDead(Point point) {
+        cells.putIfAbsent(point, new DeadCell(point));
+        return cells.get(point);
     }
 
     private List<Point> neighbouringPointsFor(Point point) {

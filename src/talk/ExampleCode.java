@@ -1,4 +1,4 @@
-package gol;
+package talk;
 
 public class ExampleCode {
 //

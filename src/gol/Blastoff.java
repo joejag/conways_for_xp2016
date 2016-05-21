@@ -1,7 +1,7 @@
 package gol;
 
 import gol.gui.Gui;
-import gol.solvers.OoSolver;
+import gol.solvers.ObjectOrientatedSolver;
 import gol.solvers.ProceduralSolver;
 
 public class Blastoff {
@@ -15,7 +15,7 @@ public class Blastoff {
     }
 
     private static void objectVersion() {
-        Gui.go(currentGeneration -> new OoSolver().nextGeneration(currentGeneration));
+        Gui.go(currentGeneration -> new ObjectOrientatedSolver().nextGeneration(currentGeneration));
     }
 
 }
