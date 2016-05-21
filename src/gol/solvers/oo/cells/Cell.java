@@ -1,11 +1,11 @@
 package gol.solvers.oo.cells;
 
+import gol.solvers.oo.Grid;
 import gol.solvers.oo.visitors.WorldVisitor;
 
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public abstract class Cell {
 
@@ -20,9 +20,9 @@ public abstract class Cell {
         neighbours.add(cell);
     }
 
-    public void decideIfJoiningTheNewWorld(Map<Point, Cell> newWorld) {
+    public void decideIfJoiningTheNewWorld(Grid<Cell> newWorld) {
         if (survives())
-            newWorld.put(point, new LiveCell(point));
+            newWorld.add(point, new LiveCell(point));
     }
 
     public abstract void visit(WorldVisitor universeVisitor);
