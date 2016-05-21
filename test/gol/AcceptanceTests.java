@@ -1,6 +1,6 @@
 package gol;
 
-import gol.solvers.ProceduralSolver;
+import gol.solvers.oo.OoSolver;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -10,7 +10,8 @@ import java.util.Set;
 
 public class AcceptanceTests {
 
-    ProceduralSolver proceduralSolver = new ProceduralSolver();
+    //    ProceduralSolver proceduralSolver = new ProceduralSolver();
+    OoSolver proceduralSolver = new OoSolver();
 
     @Test
     public void testBlinker() {
