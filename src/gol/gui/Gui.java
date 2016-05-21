@@ -155,7 +155,7 @@ public class Gui {
 
         private class GameBoard extends JPanel implements ComponentListener, MouseListener, MouseMotionListener, Runnable {
             private Dimension d_gameBoardSize = null;
-            private java.util.List<Point> point = new ArrayList<>();
+            private java.util.Set<Point> point = new HashSet<>();
 
             public GameBoard() {
                 // Add resizing listener
@@ -208,7 +208,12 @@ public class Gui {
             public void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 try {
-                    for (Point newPoint : point) {
+                    Set<Point> viewablePoints = point.stream()
+                            .filter(p -> p.getY() < d_gameBoardSize.height)
+                            .filter(p -> p.getX() < d_gameBoardSize.width)
+                            .collect(Collectors.toSet());
+
+                    for (Point newPoint : viewablePoints) {
                         // Draw new point
                         g.setColor(Color.blue);
                         g.fillRect(BLOCK_SIZE + (BLOCK_SIZE * newPoint.x), BLOCK_SIZE + (BLOCK_SIZE * newPoint.y), BLOCK_SIZE, BLOCK_SIZE);
@@ -278,16 +283,9 @@ public class Gui {
 
             @Override
             public void run() {
-                boolean[][] gameBoard = new boolean[d_gameBoardSize.width + 2][d_gameBoardSize.height + 2];
-                for (Point current : point) {
-                    gameBoard[current.x][current.y] = true;
-                }
-
-                Set<Point> survivingCells = solver.nextGeneration(booleanGridToSet(gameBoard));
-                Set<Point> filteredSurvivors = survivingCells.stream().filter(p -> p.getY() < d_gameBoardSize.height).collect(Collectors.toSet());
-
+                Set<Point> survivingCells = solver.nextGeneration(point);
                 resetBoard();
-                point.addAll(filteredSurvivors);
+                point.addAll(survivingCells);
                 repaint();
                 try {
                     Thread.sleep(1000 / i_movesPerSecond);
@@ -296,18 +294,6 @@ public class Gui {
                 }
             }
 
-            private Set<Point> booleanGridToSet(boolean[][] gameBoard) {
-                Set<Point> currentGeneration = new HashSet<>();
-
-                for (int i = 1; i < gameBoard.length - 1; i++) {
-                    for (int j = 1; j < gameBoard[0].length - 1; j++) {
-                        if (gameBoard[i][j])
-                            currentGeneration.add(new Point(i, j));
-                    }
-                }
-
-                return currentGeneration;
-            }
         }
     }
 
