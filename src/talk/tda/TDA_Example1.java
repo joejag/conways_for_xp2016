@@ -1,6 +1,6 @@
 package talk.tda;
 
-public class Example1 {
+public class TDA_Example1 {
 
     private class User {
         boolean admin;
