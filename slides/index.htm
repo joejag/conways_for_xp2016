@@ -1,0 +1,145 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Code Retreat - Joe Wright</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=1274, user-scalable=no">
+	<link rel="stylesheet" href="style.css">	
+	<link href='http://fonts.googleapis.com/css?family=Rambla' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
+	<style>
+	    body {font-family: 'Rambla', sans-serif; text-align: center;}
+
+
+      h1,h2,h3,h4,strong { color: rgba(255, 92, 0, 0.59); }
+      h1 { font-size: 4em; } 
+      h2 { font-size: 2em; margin-top: 0; } 
+      h3 { font-size: 1em; padding-top: 4em; } 
+      h4 { font-size: 1em; margin: 0 0 1em 0;} 
+
+      ol, ul, li { text-align: left; }
+      .mono p { text-align: left; font-family: 'Inconsolata'; font-size: 0.7em; }
+      .heading_with_text p { font-size: 1.3em; }
+      .session { margin-top: 1.5em; }
+
+      table { 
+        margin: 0 auto; margin-top: 2em;
+        border-collapse: collapse;
+        border-collapse-style: solid;
+        border-color: black; 
+        box-shadow: 1px 1px 1px #999; }
+      table tr td { padding: 1em; }
+      table tr td.live { background-color: black; }
+	</style>
+
+</head>
+<body class="list">
+	<header class="caption"><h1>Code Retreat</h1><p>Joe Wright</p></header>
+	
+   <div class="slide cover" id="z-3-conways"><div class="heading"><section><header><h2 style="color: white; padding-top: 1.5em">Conway's Game of Life</h2><img src="conway.gif" style="background-color: white" alt=""></header></section></div></div>
+
+  <div class="slide" id="z-4-rules-1a"><div><section><header>
+      <h4>Rules</h4>
+      <div> 
+        1. Any live cell with fewer than two live neighbours dies, as if caused by under-population.
+        <table border=1 class="conway">
+          <tr> <td></td> <td></td> <td></td> </tr>
+          <tr> <td></td> <td class="live"></td> <td></td> </tr>
+          <tr> <td></td> <td></td> <td></td> </tr>
+        </table>
+      </div>
+   </header></section></div></div>
+  <div class="slide" id="z-4-rules-1b"><div><section><header>
+      <h4>Rules</h4>
+      <div> 
+        1. Any live cell with fewer than two live neighbours dies, as if caused by under-population.
+        <table border=1 class="conway">
+          <tr> <td></td> <td></td> <td></td> </tr>
+          <tr> <td></td> <td></td> <td></td> </tr>
+          <tr> <td></td> <td></td> <td></td> </tr>
+        </table>
+      </div>
+   </header></section></div></div>
+
+  <div class="slide" id="z-4-rules-2a"><div><section><header>
+      <h4>Rules</h4>
+      <div> 
+        2. Any live cell with two or three live neighbours lives on to the next generation.
+        <table border=1 class="conway">
+          <tr> <td class="live"></td> <td></td> <td></td> </tr>
+          <tr> <td></td> <td class="live"></td> <td></td> </tr>
+          <tr> <td class="live"></td> <td></td> <td></td> </tr>
+        </table>
+      </div>
+   </header></section></div></div>
+  <div class="slide" id="z-4-rules-2b"><div><section><header>
+      <h4>Rules</h4>
+      <div> 
+        2. Any live cell with two or three live neighbours lives on to the next generation.
+        <table border=1 class="conway">
+          <tr> <td></td> <td></td> <td></td> </tr>
+          <tr> <td></td> <td class="live"></td> <td></td> </tr>
+          <tr> <td></td> <td></td> <td></td> </tr>
+        </table>
+      </div>
+   </header></section></div></div>
+
+  <div class="slide" id="z-4-rules-3a"><div><section><header>
+      <h4>Rules</h4>
+      <div> 
+        3. Any live cell with more than three live neighbours dies, as if by overcrowding.
+        <table border=1 class="conway">
+          <tr> <td></td> <td class="live"></td> <td></td> </tr>
+          <tr> <td class="live"></td> <td class="live"></td> <td class="live"></td> </tr>
+          <tr> <td></td> <td class="live"></td> <td></td> </tr>
+        </table>
+      </div>
+   </header></section></div></div>
+  <div class="slide" id="z-4-rules-3b"><div><section><header>
+      <h4>Rules</h4>
+      <div> 
+        3. Any live cell with more than three live neighbours dies, as if by overcrowding.
+        <table border=1 class="conway">
+          <tr> <td></td> <td class="live"></td> <td></td> </tr>
+          <tr> <td class="live"></td> <td></td> <td class="live"></td> </tr>
+          <tr> <td></td> <td class="live"></td> <td></td> </tr>
+        </table>
+      </div>
+   </header></section></div></div>
+
+  <div class="slide" id="z-4-rules-4a"><div><section><header>
+      <h4>Rules</h4>
+      <div> 
+        4. Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction. 
+        <table border=1 class="conway">
+          <tr> <td class="live"></td> <td></td> <td></td> </tr>
+          <tr> <td></td> <td></td> <td></td> </tr>
+          <tr> <td class="live"></td> <td></td> <td class="live"></td> </tr>
+        </table>
+      </div>
+   </header></section></div></div>
+  <div class="slide" id="z-4-rules-4b"><div><section><header>
+      <h4>Rules</h4>
+      <div> 
+        4. Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction. 
+        <table border=1 class="conway">
+          <tr> <td></td> <td></td> <td></td> </tr>
+          <tr> <td></td> <td class="live"></td> <td></td> </tr>
+          <tr> <td></td> <td></td> <td></td> </tr>
+        </table>
+      </div>
+   </header></section></div></div>
+
+  <div class="slide" id="z-5a-rulesrecap"><div class="heading_with_text"><section><header>
+      <h2>Conway's Game of Life</h2>
+      <ol>
+        <li>Any <strong>live</strong> cell with <strong>fewer than two</strong> live neighbours dies, as if caused by under-population.</li>
+        <li>Any <strong>live</strong> cell with <strong>two or three</strong> live neighbours lives on to the next generation.</li>
+        <li>Any <strong>live</strong> cell with <strong>more than three</strong> live neighbours dies, as if by overcrowding</li>
+        <li>Any <strong>dead</strong> cell with <strong>exactly three</strong> live neighbours becomes a live cell, as if by reproduction</li>
+      </ol>
+   </header></section></div></div>
+
+	<script src="script.js"></script>	
+</body>
+</html>
