@@ -10,7 +10,6 @@
 	<style>
 	    body {font-family: 'Rambla', sans-serif; text-align: center;}
 
-
       h1,h2,h3,h4,strong { color: rgba(255, 92, 0, 0.59); }
       h1 { font-size: 4em; } 
       h2 { font-size: 2em; margin-top: 0; } 
@@ -21,6 +20,8 @@
       .mono p { text-align: left; font-family: 'Inconsolata'; font-size: 0.7em; }
       .heading_with_text p { font-size: 1.3em; }
       .session { margin-top: 1.5em; }
+
+      p.indent { padding-left: 14px; margin: 0; font-size: 1em; }
 
       table { 
         margin: 0 auto; margin-top: 2em;
@@ -138,6 +139,40 @@
         <li>Any <strong>live</strong> cell with <strong>more than three</strong> live neighbours dies, as if by overcrowding</li>
         <li>Any <strong>dead</strong> cell with <strong>exactly three</strong> live neighbours becomes a live cell, as if by reproduction</li>
       </ol>
+   </header></section></div></div>
+
+  <div class="slide" id="z-6a-finishit"><div class="heading_with_text"><section><header>
+      <h2 style="font-size: 1.5em;">Method #1 - procedural</h2>
+      <ol>
+        <li>Use a grid of fixed size</li>
+        <li>Make an empty copy of the grid</li>
+        <li>foreach x,y  
+          <p class="indent">Count alive neighbours</p>
+          <p class="indent">Apply rules - save result in copied grid</p></li>
+        <li>Return now populated copied grid</li>
+      </ol>
+   </header></section></div></div>
+
+  <div class="slide" id="z-6b-finishit"><div class="heading_with_text"><section><header>
+      <h2 style="font-size: 1.5em;">Method #2 - functional</h2>
+      <ol>
+        <li>Use a sparse grid</li>
+        <li>foreach x,y  
+          <p class="indent">Make a list of alive neighbours</p></li>
+        <li>Count the frequency each cell appears in list</li>
+        <li>Apply rules as a filter on the frequency list - return</li>
+    </ol>
+   </header></section></div></div>
+
+  <div class="slide" id="z-6c-finishit"><div class="heading_with_text"><section><header>
+      <h2 style="font-size: 1.5em;">Method #3 - object orientated</h2>
+      <ol>
+        <li>Create and populate objects for World &amp; Cells</li>
+        <li>foreach x,y in the world  
+          <p class="indent">Let cells know about their neighbours</p>
+          <p class="indent">Ask or tell cell to live or die</p></li>
+        <li>The world knows the new state of the universe</li>
+    </ol>
    </header></section></div></div>
 
 	<script src="script.js"></script>	
