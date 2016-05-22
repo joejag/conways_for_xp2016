@@ -20,12 +20,21 @@ public class Connascence_4_OfPosition {
     // Example 2
     public void createPoint() {
         new Point(2, 3);
+    }
 
-        new Email("joe@hotmail.com", "jane@hotmail.com", "A subject line", "a message body");
+
+
+    // Example 3
+    public void createEmail() {
+        new Email("joe@hotmail.com", "jane@hotmail.com", "A subject line", "a message body").send();
     }
 
     private class Email {
         public Email(String from, String to, String subject, String body) {
+        }
+
+        public void send() {
+
         }
     }
 }
