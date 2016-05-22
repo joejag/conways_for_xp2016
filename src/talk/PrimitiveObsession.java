@@ -20,6 +20,6 @@ public class PrimitiveObsession {
                 // do something
             }
         }
-        
+
     }
 }

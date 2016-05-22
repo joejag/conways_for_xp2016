@@ -11,8 +11,8 @@ public class Connascence_5_OfExecution {
     // Example 1
     public void exampleOne() {
         List<String> strings = new ArrayList<>();
-        Iterator<String> iterator = strings.iterator();
 
+        Iterator<String> iterator = strings.iterator();
         while (iterator.hasNext()) {
             String next = iterator.next();
             System.out.println(next);
