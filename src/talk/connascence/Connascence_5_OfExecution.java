@@ -9,8 +9,7 @@ public class Connascence_5_OfExecution {
     // two different lines of code have to be executed in a certain order for the program to be executed correctly.
 
     // Example 1
-    public void exampleOne() {
-        List<String> strings = new ArrayList<>();
+    public void exampleOne(List<String> strings) {
 
         Iterator<String> iterator = strings.iterator();
         while (iterator.hasNext()) {
