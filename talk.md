@@ -99,9 +99,9 @@
 * NullObject -> empty DataStructure. Offensive code
 * NullObject -> empty data. don't have to use inheritance.
 * Expressions and Statements -> collapse this to reduce mental hardship.
-* Others: Use default in case of null. Predicates for filtering
+* NullChecking -> Defaults in case of null. 
 
-* We have richer, better-documented and smaller options to remove ifs. Not all bad, but we don't have to always use the if.
+* Mention: Predicates for filtering. We have richer, better-documented and smaller options to remove ifs. Not all bad, but we don't have to always use the if.
 
 -> So how about we put all this theory into practice?
 
