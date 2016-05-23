@@ -28,7 +28,7 @@
  * This is great advice. The main driver for OO was putting state next to the behaviour that changes it, then encapsulating it away from the rest of the world via message passing.
  * But a more fine grained measure exists. That is Connasence
 
- ## Connascene
+## Connascene
 
  * Connascene like Cohesion is another word that makes more sense when you understand it's root. con (together) nasence (grow). It means two or more things must grow together. Beautiful description of the problem coupling poses.
  * Connascene gives us an order of different types of coupling, with the goal being to reduce the coupling via refactorings.
