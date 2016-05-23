@@ -16,7 +16,4 @@ public class Ifs_Example4_ExpressionsAndStatements {
         }
     }
 
-    public boolean less(boolean foo, boolean bar, boolean baz) {
-        return foo && bar || baz;
-    }
 }

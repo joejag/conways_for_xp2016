@@ -2,11 +2,11 @@ package talk.ifs;
 
 public class TheProblem {
 
-    public void theProblem() {
+    public void theProblem(boolean someCondition) {
 
         // some shared state
 
-        if(true) {
+        if(someCondition) {
             // something
         } else {
             // another something

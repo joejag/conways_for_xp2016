@@ -9,7 +9,11 @@ public class Ifs_Example1_BooleanParam {
 
     private static class FileUtils {
         public static void createFile(String name, String contents, boolean temporary) {
-            // file magic
+            if(temporary) {
+                // file magic
+            } else {
+                // other file magic
+            }
         }
     }
 }

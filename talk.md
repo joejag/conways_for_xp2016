@@ -73,34 +73,31 @@
 * the LoD works as a check with TDA. Without it we can end up with long coupled chains of command and query calls.
 * the LoD tells us to reduce class interaction to minimize coupling between classes
 * Why: As each coupling happens we stop outselves from evolving our designs due to accidental coupling.
+* So speak to as little as possible.
 
+## Examples of LOD
 
-ORIGINAL:
+* 1. Pizza -> Add addTopping to Pizza
+* 2. UserDisplay -> Add to User. Mention small wrapper problem
 
-* Great, so exposed less state to acheive goals. Let's start sending queries and commands everywhere yeah? Not quite. Bad idea, why?
-* Law of Demeter: Reduce class interaction to minimize coupling between classes.
-* LoD Why? Reduce chance of breakage/change when a change happens. Reduce fragile brittle code.
-* LoD implications: Say as little as possible, don't talk to more objects than you need to.
-* LoD Says only talk to: itself, params passed in, objects it created, any composite objects.
-* Lod says NOT: objects returned from a call (EXAMPLE: get list, inspect then add back to it -> Asking rather than telling)
-* LoD example problems( coupled to: sortedlist, add method, query key) -> should be an add, then just call.
-* LoD disadvantage: small wrapper methods.
-
-
-
-
-
+-> Ok, so we are going to put behaviour where it belongs, and reduce our coupling. What else can we do to improve our designs?
 
 
 
 # ACT 5: The anti-if campaign 
 
-ORIGINAL:
+ * How many of you go out your way to avoid using if statements? It's a funny one, a campaing started called the anti-if campaign to get people to start using OO constructs instead. I've found some of the advice to be helpful for making  easier to understand code.
+ * But what is wrong with ifs? 
+ * 1. Makes it easier to modify code in bad ways. (show example) - biz logic ends up in the wrong place
+ * 2. You must simulate execution in your head, and that takes energy away from you; energy you might spend on other, more important problems.
+ * We cannot avoid ifs at system boundries when we validate incoming data. But we have great options in modern languages to create richer, better-documented and smaller solutions.
 
-* "The problem with control structures is that they often make it easy to modify code in bad ways.  Let's take a simple if-statement"
-* WHY CARE: more branches makes code more complicated, for coupling it requires querying state
-* "rich, better-documented, smaller and more powerful"
-* "You must simulate execution in your head, and that takes energy away from you; energy you might spend on other, more important problems."
+## Examples of anti-if
+
+* Boolean Param -> Use two methods
+* Switch on Type -> Use Polymorphism
+
+
 * Example: if statements and if expressions are two different beasts
 * Avoidance Example (boolean param): Create two methods instead: File createFile(String name) File createTempFile(String name)
 * Avoidance Example (switch->poly): Switch statements to Polymorphism
@@ -108,7 +105,6 @@ ORIGINAL:
 * Avoidance Example (Default arguments): Ruby hash
 * Example: Predicates for filtering
 * Example: Better names (max instead if x > y)
-* Ifs are important at boundries and necessary for some biz logic. But we can avoid a lot of them where it makes sense. We have to be careful not to introduce premature abstractions. But we have a lot of options for making richer, easier to read code.
 
 
 
