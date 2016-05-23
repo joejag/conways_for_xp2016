@@ -51,28 +51,18 @@
 
 # ACT 3: Tell Don't Ask 
 
+* In the abstract I gave Alec Sharp's quote that Procedural code gathers info and makes decisions, OO code tells objects to do things.
+* What it promotes is creating C&C code. This is achieved by making sure data & operations that depend on that data belong in the same object.
+* In TDA it is a sin to query an object and change it's state on it's behalf. In these cases we want to think declaritvely rather than procedurally.
+* A great example of this is when you get a raw object String back which has the colour "red". This isn't semantically an object as it has no association. It cannot answer questions, it's just data. Keep the data with behaviour that understands it.
+* So in TDA with have commands and queries and we avoid giving out raw data. Let's see some examples.
 
+## Examples of TDA
 
-
-
-
-
-
-ORIGINAL:
-
-* Tell don't ask is about sending commands, don't make decision for them - violates encapsulation.
-* Good OOP is about telling objects what you want done, not querying an object and acting on its behalf. Data and operations that depend on that data belong in the same object.
-* Think declarative rather than prodcedurally. Easier when you think of responsibilities and commands on them.
-* Problems of procedural: raw object (red string). Not semantically an object. No association. Can't answer questions, it's just data, not an object (Demo of string red)
-* Primitive Obessesion
-* Ask is a query, to tell is a command. Keep separate to adhere to Tell Don;t Ask.
-* Invariants: Example: Expose iterator or each() "I don't care how you run it" - Web service - asking if it can do an operation before doing it
-
-
-
-
-
-
+* 1. Admin user message -> push welcome into User class
+* 2. System Monitor -> move check for overheating into the monitor
+* 3. Stock Manager -> Move Stock count into StockManager
+* 4. CoE -> use forEach, not hasNext(), next()
 
 
 
