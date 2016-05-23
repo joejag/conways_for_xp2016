@@ -1,17 +1,17 @@
----- ACT 1: INTRO
+# ACT 1: INTRO
 
  * TDA for me is about making code easier to change and read. Not fearful of it. 
  * The way TDA does thais is reducing coupling and improving cohesion of our code. Strongly coupled code goes together, try to make other things less coupled. TDA targets cohesion, coupled with Law of Demeter to reduce coupling.
  * Right foot, making sure we understand what we mean by C&C.
 
--- Cohesion
+## Cohesion
 
  * Cohesion is about how related a module is to itself. Interdepency within a module. This helps us understand its purpose.
  * Devs get coupling, but cohesion is harder to grasp as it's not an everyday word. The word comes from adhesive (duct tape, glue)
  * Cohesive means sticks to each other (clay, velcro). Answers the question: If i throw this code at that code, would it stick?
  * Ignoring Cohesion: Unrelated code that you forget to change, or behaviour burried in if statements which doesn't relate.
 
--- Coupling
+## Coupling
 
  * The degree one module depends on another, the interdepency between modules. This helps us change code.
  * If changing one module means changing another then coupling exists. We do want some coupling.
@@ -22,20 +22,20 @@
 
 
 
----- ACT 2: Measuring Coupling with Connasence
+# ACT 2: Measuring Coupling with Connasence
 
  * Larry Constantine was responsible for giving us C&C. His measure of coupling was that the worst offendors were shared state and globals.
  * This is great advice. The main driver for OO was putting state next to the behaviour that changes it, then encapsulating it away from the rest of the world via message passing.
  * But a more fine grained measure exists. That is Connasence
 
- -- Connascene
+ ## Connascene
 
  * Connascene like Cohesion is another word that makes more sense when you understand it's root. con (together) nasence (grow). It means two or more things must grow together. Beautiful description of the problem coupling poses.
  * Connascene gives us an order of different types of coupling, with the goal being to reduce the coupling via refactorings.
  * Localitlity is important when analysing connascene. Stronger forms are acceptable is the elements involved are closely related. That's where cohesion comes into play.
  * Targetting connascene means actively reducing the cost to change your system.
 
--- Examples of Connasence
+## Examples of Connasence
 
  * We'll go from weakest to highest. 
  * Name: agreeing on the name of something, most common type
@@ -49,7 +49,7 @@
 
 
 
----- ACT 3: Tell Don't Ask 
+# ACT 3: Tell Don't Ask 
 
 
 
@@ -76,7 +76,7 @@ ORIGINAL:
 
 
 
----- ACT 4 Law of Demeter
+# ACT 4 Law of Demeter
 
 
 ORIGINAL:
@@ -97,7 +97,7 @@ ORIGINAL:
 
 
 
----- ACT 5: The anti-if campaign 
+# ACT 5: The anti-if campaign 
 
 ORIGINAL:
 
@@ -122,10 +122,10 @@ ORIGINAL:
 
 
 
----- ACT 6: Game of Life
+# ACT 6: Game of Life
 
 
 
----- ACt 7: FINALE
+# ACt 7: FINALE
 
 
