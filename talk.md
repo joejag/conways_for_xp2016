@@ -96,21 +96,14 @@
 
 * Boolean Param -> Use two methods
 * Switch on Type -> Use Polymorphism
+* NullObject -> empty DataStructure. Offensive code
+* NullObject -> empty data. don't have to use inheritance.
+* Expressions and Statements -> collapse this to reduce mental hardship.
+* Others: Use default in case of null. Predicates for filtering
 
+* We have richer, better-documented and smaller options to remove ifs. Not all bad, but we don't have to always use the if.
 
-* Example: if statements and if expressions are two different beasts
-* Avoidance Example (boolean param): Create two methods instead: File createFile(String name) File createTempFile(String name)
-* Avoidance Example (switch->poly): Switch statements to Polymorphism
-* Avoidance Example (null object): Offensive code -> Creates Defensive code. Empty list. If you are going to return nulls, use an Optional type.
-* Avoidance Example (Default arguments): Ruby hash
-* Example: Predicates for filtering
-* Example: Better names (max instead if x > y)
-
-
-
-
-
-
+-> So how about we put all this theory into practice?
 
 
 
