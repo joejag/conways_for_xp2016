@@ -64,9 +64,15 @@
 * 3. Stock Manager -> Move Stock count into StockManager
 * 4. CoE -> use forEach, not hasNext(), next()
 
+-> That's TDA, but I want to also tell you about a sibling principle
 
 
-# ACT 4 Law of Demeter
+
+# ACT 4: Law of Demeter
+
+* the LoD works as a check with TDA. Without it we can end up with long coupled chains of command and query calls.
+* the LoD tells us to reduce class interaction to minimize coupling between classes
+* Why: As each coupling happens we stop outselves from evolving our designs due to accidental coupling.
 
 
 ORIGINAL:

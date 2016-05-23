@@ -1,9 +1,9 @@
-package talk;
+package talk.lod;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class LawOfDemeter {
+public class LawOfDemeter_Example1 {
 
     private class Pizza {
         private int price;
