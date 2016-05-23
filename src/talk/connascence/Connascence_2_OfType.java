@@ -16,8 +16,8 @@ public class Connascence_2_OfType {
 
 
     // Example 2
-    public void makeSomething() {
-        List<String> names = new ArrayList<>();
+    public List<String> makeSomething() {
+        return new ArrayList<>();
     }
 
 

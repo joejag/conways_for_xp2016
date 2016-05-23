@@ -11,8 +11,8 @@ public class Connascence_4_OfPosition {
         String[] vehicles = new String[]{"ford", "fiesta", "hatchback"};
 
         String make = vehicles[0];
-        String model = vehicles[0];
-        String bodyStyle = vehicles[0];
+        String model = vehicles[1];
+        String bodyStyle = vehicles[2];
     }
 
 
@@ -26,7 +26,7 @@ public class Connascence_4_OfPosition {
 
     // Example 3
     public void createEmail() {
-        new Email("joe@hotmail.com", "jane@hotmail.com", "A subject line", "a message body").send();
+        new Email("joe@hotmail.com", "jane@hotmail.com", "A a great day", "you've won a free trip").send();
     }
 
     private class Email {
