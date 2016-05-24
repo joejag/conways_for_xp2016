@@ -32,6 +32,7 @@ public class LawOfDemeter_Example1 {
     }
 
     private class PizzaBuilder {
+
         private Topping topping;
 
         public void theGood(Pizza pizza) {
@@ -41,7 +42,7 @@ public class LawOfDemeter_Example1 {
             // 2. It's cool to call methods on objects passed into our methods
             int price = pizza.getPrice();
 
-            // 3. It's cool to call methods on objects we create
+            // 3. It's cool to call methods on objects we own
             topping = new Topping("mushrooms");
             int weight = topping.getWeight();
 
