@@ -19,12 +19,7 @@ public class Cell {
     public void meetNeighbour(Cell cell) {
         liveNeighbours.add(cell);
     }
-
-    public void decideIfJoiningTheNewWorld(Grid<Cell> newWorld) {
-        if (survives())
-            newWorld.add(point, new Cell(point, true));
-    }
-
+    
     private boolean survives() {
         return (!isAlive && (liveNeighbours.size() == 3)) ||
                 (isAlive && ((liveNeighbours.size() == 2) || (liveNeighbours.size() == 3)));
