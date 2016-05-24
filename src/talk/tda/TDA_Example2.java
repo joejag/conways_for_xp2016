@@ -13,9 +13,14 @@ public class TDA_Example2 {
         }
     }
 
-    public void checkForOverheating(SystemMonitor monitor) {
-        if (monitor.getTemperature() > 100) {
-            monitor.soundAlarms();
+
+    private class DoThings {
+
+        public void checkForOverheating(SystemMonitor monitor) {
+            if (monitor.getTemperature() > 100) {
+                monitor.soundAlarms();
+            }
         }
+
     }
 }

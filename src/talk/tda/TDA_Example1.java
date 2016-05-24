@@ -22,11 +22,15 @@ public class TDA_Example1 {
         }
     }
 
-    public String getWelcomeMessage(User currentUser) {
-        if(currentUser.isAdmin()) {
-            return currentUser.getAdminWelcomeMessage();
-        } else {
-            return currentUser.getUserWelcomeMessage();
+    private class Displayer {
+
+        public String getWelcomeMessage(User currentUser) {
+            if (currentUser.isAdmin()) {
+                return currentUser.getAdminWelcomeMessage();
+            } else {
+                return currentUser.getUserWelcomeMessage();
+            }
         }
+
     }
 }
