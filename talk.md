@@ -2,7 +2,8 @@
 
  * TDA for me is about making code easier to change and read. Not fearful of it. 
  * The way TDA does thais is reducing coupling and improving cohesion of our code. Strongly coupled code goes together, try to make other things less coupled. TDA targets cohesion, coupled with Law of Demeter to reduce coupling.
- * Right foot, making sure we understand what we mean by C&C.
+ 
+ -> Right foot, making sure we understand what we mean by C&C.
 
 ## Cohesion
 
@@ -111,6 +112,6 @@
 
 
 
-# ACt 7: FINALE
+# ACT 7: FINALE
 
 
