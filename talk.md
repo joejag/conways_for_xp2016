@@ -103,7 +103,8 @@
 * Expressions and Statements -> collapse this to reduce mental hardship.
 * NullChecking -> Defaults in case of null. 
 
-* Mention: Predicates for filtering. We have richer, better-documented and smaller options to remove ifs. Not all bad, but we don't have to always use the if.
+* Mention: Predicates for filtering. We have richer, better-documented and smaller options to remove ifs. 
+* Not all bad, but we don't have to always use the if. Conditionals Aren’t Evil, Unless You Duplicate Them
 
 -> So how about we put all this theory into practice?
 

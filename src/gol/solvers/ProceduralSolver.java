@@ -10,45 +10,45 @@ public class ProceduralSolver {
         Set<Point> survivingCells = new HashSet<>();
 
         // assume grid size of 200
-        for (int i = 0; i < 200; i++) {
-            for (int j = 0; j < 200; j++) {
+        for (int x = 0; x < 200; x++) {
+            for (int y = 0; y < 200; y++) {
 
                 // 1. Find survivors
                 int surrounding = 0;
 
-                if (currentGeneration.contains(new Point(i - 1, j - 1))) {
+                if (currentGeneration.contains(new Point(x - 1, y - 1))) {
                     surrounding++;
                 }
-                if (currentGeneration.contains(new Point(i - 1, j))) {
+                if (currentGeneration.contains(new Point(x - 1, y))) {
                     surrounding++;
                 }
-                if (currentGeneration.contains(new Point(i - 1, j + 1))) {
+                if (currentGeneration.contains(new Point(x - 1, y + 1))) {
                     surrounding++;
                 }
-                if (currentGeneration.contains(new Point(i, j - 1))) {
+                if (currentGeneration.contains(new Point(x, y - 1))) {
                     surrounding++;
                 }
-                if (currentGeneration.contains(new Point(i, j + 1))) {
+                if (currentGeneration.contains(new Point(x, y + 1))) {
                     surrounding++;
                 }
-                if (currentGeneration.contains(new Point(i + 1, j - 1))) {
+                if (currentGeneration.contains(new Point(x + 1, y - 1))) {
                     surrounding++;
                 }
-                if (currentGeneration.contains(new Point(i + 1, j))) {
+                if (currentGeneration.contains(new Point(x + 1, y))) {
                     surrounding++;
                 }
-                if (currentGeneration.contains(new Point(i + 1, j + 1))) {
+                if (currentGeneration.contains(new Point(x + 1, y + 1))) {
                     surrounding++;
                 }
 
                 // 2. Decide is the cell lives or dies
-                if (currentGeneration.contains(new Point(i, j))) {
+                if (currentGeneration.contains(new Point(x, y))) {
                     if ((surrounding == 2) || (surrounding == 3)) {
-                        survivingCells.add(new Point(i, j));
+                        survivingCells.add(new Point(x, y));
                     }
                 } else {
                     if (surrounding == 3) {
-                        survivingCells.add(new Point(i, j));
+                        survivingCells.add(new Point(x, y));
                     }
                 }
             }
