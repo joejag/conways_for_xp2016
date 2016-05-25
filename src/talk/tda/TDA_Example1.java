@@ -2,33 +2,23 @@ package talk.tda;
 
 public class TDA_Example1 {
 
-    private class User {
-        boolean admin;
+    private class SystemMonitor {
 
-        public User(boolean admin) {
-            this.admin = admin;
+        public int getTemperature() {
+            return 99;
         }
 
-        public boolean isAdmin() {
-            return admin;
-        }
-
-        public String getAdminWelcomeMessage() {
-            return "Hello admin";
-        }
-
-        public String getUserWelcomeMessage() {
-            return "Hello user";
+        public void soundAlarms() {
+            System.out.println("Woo woo woo!");
         }
     }
 
-    private class Displayer {
 
-        public String getWelcomeMessage(User currentUser) {
-            if (currentUser.isAdmin()) {
-                return currentUser.getAdminWelcomeMessage();
-            } else {
-                return currentUser.getUserWelcomeMessage();
+    private class DoThings {
+
+        public void checkForOverheating(SystemMonitor monitor) {
+            if (monitor.getTemperature() > 100) {
+                monitor.soundAlarms();
             }
         }
 
