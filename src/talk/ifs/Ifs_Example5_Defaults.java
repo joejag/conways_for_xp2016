@@ -1,5 +1,7 @@
 package talk.ifs;
 
+import java.util.HashMap;
+
 public class Ifs_Example5_Defaults {
 
     private class Repository {
@@ -11,6 +13,7 @@ public class Ifs_Example5_Defaults {
 
     private class Finder {
         public String displayRecord(Repository repository) {
+
             String record = repository.getRecord(123);
             if(record == null) {
                 return "Not found";
